@@ -76,11 +76,3 @@ This will execute all the Cucumber scenarios defined in the feature files.
 
 - If you encounter issues with ChromeDriver, ensure you have the latest version of Chrome installed.
 - The project uses WebDriverManager to handle driver executables. If you face any driver-related issues, try updating the WebDriverManager dependency in `build.gradle`.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
