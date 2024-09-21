@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.personal'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    testImplementation 'io.cucumber:cucumber-java:6.10.4'
+    testImplementation 'io.cucumber:cucumber-junit:6.10.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.testRuntimeClasspath + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'stepdefinitions', 'src/test/resources/features']
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
