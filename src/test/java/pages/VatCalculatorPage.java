@@ -1,9 +1,5 @@
 package pages;
 
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.time.Duration;
-import java.util.function.ToDoubleBiFunction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,13 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.WebDriverFactory;
 
 public class VatCalculatorPage {
 
   private final WebDriverWait wait;
   private final WebDriver driver;
-
 
 //  TODO: use best practices to locate all elements - this is just a starting point
 
@@ -27,16 +21,16 @@ public class VatCalculatorPage {
   @FindBy(xpath = "//*[@id=\"vatcalculator\"]/div[2]/div[2]/select")
   private WebElement countryDropdown;
 
-  @FindBy(id = "VAT_20")
-  private WebElement vatRateDropdown;
+  @FindBy(xpath = "//*[@id=\"vatcalculator\"]/div[4]/div[2]/label[1]")
+  private WebElement vatRate7PercentButton;
 
   @FindBy(id = "NetPrice")
   private WebElement netAmountInput;
 
-  @FindBy(id = "gross_amount")
+  @FindBy(id = "Price")
   private WebElement grossAmountInput;
 
-  @FindBy(id = "vat_amount")
+  @FindBy(id = "VATsum")
   private WebElement vatAmountInput;
 
   @FindBy(id = "google-visualization-errors-all-5")
@@ -64,9 +58,9 @@ public class VatCalculatorPage {
   }
 
   public void selectVatRate(String vatRate) {
-//    TODO
-    wait.until(ExpectedConditions.elementToBeClickable(vatRateDropdown));
-    vatRateDropdown.click();
+//    TODO: different approach to handle the VAT rate
+    wait.until(ExpectedConditions.visibilityOf(vatRate7PercentButton));
+    vatRate7PercentButton.click();
   }
 
   public void enterNetAmount(String amount) {

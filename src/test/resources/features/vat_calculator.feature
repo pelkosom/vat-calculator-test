@@ -4,10 +4,10 @@ Feature: VAT Calculator
     Given I am on the VAT calculator page
     And I accept the cookie consent
     When I select "Germany" as the country
-    And I choose "19%" as the VAT rate
+    And I choose "7%" as the VAT rate
     And I enter "100" as the Net amount
-    Then the Gross amount should be "119.00"
-    And the VAT amount should be "19.00"
+    Then the Gross amount should be "107.00"
+    And the VAT amount should be "7.00"
 
     # TODO: Add more positive scenarios
 

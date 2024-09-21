@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import pages.VatCalculatorPage;
 import utils.WebDriverFactory;
 
+//TODO: use lombok - add logging projectwide
 public class VatCalculatorStepDefinitions {
 
   private VatCalculatorPage vatCalculatorPage;
